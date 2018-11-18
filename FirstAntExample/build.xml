@@ -1,0 +1,67 @@
+<?xml version = "1.0" ?>
+<project name="FirstANTProject" default="main-target" basedir=".">
+
+	<property name="source.dir" value="src" />
+	<property name="build.dir" value="bin" />
+	<property name="javadocs.dir" value="docs" />
+	<property name="javadist.dir" value="dist" />
+
+	<!-- ================================= 
+          target: clean              
+         ================================= -->
+	<target name="clean" description="clean target or delete existing directories">
+		<delete dir="${build.dir}" />
+		<delete dir="${javadocs.dir}" />
+		<delete dir="${javadist.dir}" />
+	</target>
+
+	<!-- ================================= 
+          target: makedir              
+         ================================= -->
+	<target name="makedir" description="creating the deleted directories">
+
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${javadocs.dir}" />
+		<mkdir dir="${javadist.dir}" />
+	</target>
+
+	<!-- ================================= 
+          target: compile              
+         ================================= -->
+	<target name="compile" depends="clean,makedir" description="description">
+		<javac srcdir="${source.dir}" destdir="${build.dir}" includeantruntime="true" />
+	</target>
+
+	<!-- ================================= 
+          target: docs              
+         ================================= -->
+	<target name="docs" depends="compile" description="description">
+		<javadoc packagenames="src" sourcepath="${source.dir}" destdir="${javadocs.dir}">
+			<fileset dir="${source.dir}">
+				<include name="**" />
+			</fileset>
+		</javadoc>
+	</target>
+
+	<!-- ================================= 
+          target: jar              
+         ================================= -->
+	<target name="jar" depends="compile" description="create deployable jar">
+		<jar destfile="${javadist.dir}\FirstANTExample.jar" basedir="${build.dir}">
+
+			<manifest>
+				<attribute name="Main-class" value="
+					com.ant.example.CalculatorTest" />
+			</manifest>
+		</jar>
+	</target>
+
+	<!-- ================================= 
+          target: main-target              
+         ================================= -->
+	<target name="main-target" depends="compile,jar,docs" description="This is my main target">
+
+	</target>
+
+
+</project>
