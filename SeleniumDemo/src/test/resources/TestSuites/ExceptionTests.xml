@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="NegativeTestSuite" verbose="1">
+
+	<test name="ExceptionTest">
+		<classes>
+			<class name="com.logili.tv.ExceptionDemo" />
+		</classes>
+	</test>
+
+</suite>

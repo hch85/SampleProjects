@@ -1,0 +1,45 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="NegativeTestSuite" verbose="1">
+
+	<test name="NegativeUserNameTest">
+		<parameter name="username" value="incorrectUsername" />
+		<parameter name="password" value="SuperSecretPassword!" />
+		<parameter name="expectederrorMessage"
+			value="Your username is invalid!" />
+		<classes>
+			<class name="com.logili.tv.NegativeTests" />
+		</classes>
+	</test>
+	
+	<test name="NegativePasswordTest">
+		<parameter name="username" value="tomsmith" />
+		<parameter name="password" value="IncorrectPassword" />
+		<parameter name="expectederrorMessage"
+			value="Your password is invalid!" />
+		<parameter name="browser" value="firefox" />
+		<classes>
+			<class name="com.logili.tv.NegativeTests" />
+		</classes>
+	</test>
+
+
+
+
+	<!-- <test name="NegativeTest">
+		<groups> <run> <include name="smokeTests"></include> </run> </groups>
+		<parameter name="username" value="" />
+		<parameter name="password" value="" />
+		<parameter name="expectederrorMessage" value="" />
+	<parameter name="username" value="" />
+	<classes>
+		<class name="com.logili.tv.NegativeTests">
+			<methods>
+				<include name="lncorrectPassNameTest"></include>
+				<exclude name=""></exclude>
+			</methods>
+		</class>
+	</classes>
+	</test> -->
+
+</suite>
